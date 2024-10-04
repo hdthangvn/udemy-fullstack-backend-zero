@@ -1,19 +1,19 @@
 require('dotenv').config();
 const express = require('express') // commonjs 
 const configViewEngine = require('./config/viewengine');
-const webRouter = require('./routes/web');
+const webRoutes = require('./routes/web');
 
 
 const app = express() // tạo express application
 const port =  process.env.PORT || 8888 // init port
-console.log('>>>  check :', process.env.PORT )
+console.log('>>>  chegitck :', process.env.PORT )
 const hostname =  process.env.HOST_NAME 
 
 // config template engine
 configViewEngine(app);
 
 // khai báo routes
-app.use('/test1', webRouter);
+app.use('/', webRoutes);
 
 
 
