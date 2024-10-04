@@ -1,0 +1,2 @@
+node_modules
+// Nếu đẩy code lên git thì file node_modules sẽ ko được đẩy ( bị bơ luôn )
