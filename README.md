@@ -9,6 +9,8 @@ MVC(part 1) :
 MVC(part 2) :
     Làm quen với thằng controllers(homeControllers.js), chia tách routes và viết code 1 cách hiệu quả khi sử dụng controllers.
 
-=>>>    server.js:  Khởi động ứng dụng, cấu hình view engine và các route.
+=>>>    server.js:  Thiết lập các cấu hình liên quan đến view engine, ví dụ như dùng EJS để render các file view.
         routes/web.js:  Điều hướng các request từ người dùng đến controller thích hợp.
         controllers/homeControllers.js:  Xử lý logic cho các request và gửi phản hồi hoặc render các file view (như sample.ejs).
+        views/sample.ejs: Đây là file view (giao diện) được render phía server. Nó sử dụng EJS (Embedded JavaScript) để hiển thị dữ liệu mà controller truyền tới.
+        server.js: Đây là file chính, nơi bạn khởi tạo server Node.js, cài đặt middleware, và khởi động toàn bộ ứng dụng.
