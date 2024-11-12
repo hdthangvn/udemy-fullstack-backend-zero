@@ -1,0 +1,9 @@
+PORT=
+# app hostname
+HOST_NAME=
+
+DB_HOST=
+DB_PORT=
+DB-USER=
+DB_PASSWORD=
+DB_NAME=
