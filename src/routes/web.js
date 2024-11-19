@@ -1,5 +1,5 @@
 const express = require('express');
-const { getHomepage, getABC, getHoidanit } = require('../controllers/homeControllers');
+const { getHomepage, getABC, getHoidanit, postCreateUser } = require('../controllers/homeControllers');
 const router = express.Router();
 // router.Method('/route',handler)
 
@@ -13,6 +13,7 @@ router.get('/abc', getABC);
 
 router.get('/hoidanit', getHoidanit);
 
+router.post('/create-user', postCreateUser);
 module.exports = router; // export default
 
 
