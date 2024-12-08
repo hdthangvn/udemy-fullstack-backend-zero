@@ -1,5 +1,5 @@
 const express = require('express');
-const { getHomepage, getABC, getHoidanit, postCreateUser } = require('../controllers/homeControllers');
+const { getHomepage, getABC, getHoidanit, postCreateUser, getCreatePage } = require('../controllers/homeControllers');
 const router = express.Router();
 // router.Method('/route',handler)
 
@@ -12,8 +12,9 @@ router.get('/', getHomepage); // ko có dấu đóng mở ngoặc vì nếu có 
 router.get('/abc', getABC);
 
 router.get('/hoidanit', getHoidanit);
-
+router.get('/create', getCreatePage)
 router.post('/create-user', postCreateUser);
+
 module.exports = router; // export default
 
 
