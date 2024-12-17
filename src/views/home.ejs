@@ -44,24 +44,32 @@
 <body>
     <div class="topnav">
         <a class="active" href="/">Home</a>
-        
-        <a href="/create">Create User</a>
-        
+        <a href="/create">Create User</a>     
     </div>
 
     <div class="table-container">
-        <div class="title">List Users</div>
+      <%= JSON.stringify(listUsers) %>  <!-- dung <% %> de su dung cu phap cua ejs -->
+      <!-- chuyen du lieu(dang Object) tu controller sang views (convert String ) -->
+
+      <div class="title">List Users</div>
     </div>
     <table id="customers">
         <tr>
-          <th>Company</th>
-          <th>Contact</th>
-          <th>Country</th>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Name</th>
+          <th>City</th>
+          <td>Actions</td>
         </tr>
         <tr>
           <td>Alfreds Futterkiste</td>
           <td>Maria Anders</td>
           <td>Germany</td>
+          <td>Germany</td>
+          <td>
+            <button>Edit</button>
+            <button>Delete</button>
+          </td>
         </tr>
         <tr>
           <td>Berglunds snabbköp</td>

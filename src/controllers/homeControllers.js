@@ -1,8 +1,13 @@
 
 const connection = require('../config/database');
+const router = require('../routes/web');
+const {getAllUsers} = require('../services/CRUDService');
 
-const getHomepage = (req, res) => {
-    return res.render('home.ejs')
+const getHomepage = async (req, res) => {
+    let results = await getAllUsers()
+    // let ky vong ve phai tra ra dang array -> dung await
+    console.log(">>> check rows:", results);
+    return res.render('home.ejs', {listUsers: results})
    
 }
 
@@ -27,21 +32,7 @@ const postCreateUser = async (req, res) => {
     
     console.log(">>> email =", email, "   >>> name = ", name, "  >>> city = ", city)
 
-    //   let {email, name, city} = req.body;
-
-    //   INSERT INTO Users (email, name, city)
-    //   VALUES ("test", "Hoang Duc Thang", "Nghe an");
     
-
-    /* connection.query(
-        `INSERT INTO Users (email, name, city)
-        VALUES (?, ?, ?);`,
-        [email , name , city ],
-        function(err, results) {
-            console.log(results);
-            res.send(' Created user succeed  !!')
-        }
-    );  */
 
     let [results, fields] = await connection.query(
         `INSERT INTO Users (email, name, city) VALUES (?, ?, ?);`, [email , name , city ],
@@ -52,6 +43,6 @@ const postCreateUser = async (req, res) => {
 
 module.exports = {
     getHomepage, getABC, getHoidanit, 
-    postCreateUser, getCreatePage
+    postCreateUser, getCreatePage, 
 }
 

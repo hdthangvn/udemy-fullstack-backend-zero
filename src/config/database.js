@@ -1,5 +1,6 @@
 require('dotenv').config();
 const mysql = require('mysql2/promise');
+// promise giúp code ko cần phải viết dưới dạng callback
 
 // create the connection to database
 /*

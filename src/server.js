@@ -1,41 +1,27 @@
-require('dotenv').config();
-const express = require('express') // commonjs 
+require('dotenv').config(); // giúp sử dụng dòng process.env....(in ra ...)
+const express = require('express') // import express vào ứng dụng
 const configViewEngine = require('./config/viewengine');
 const webRoutes = require('./routes/web');
-const connection = require('./config/database');
+const connection = require('./config/database'); // Dòng này import cái connection từ file database.js
 // get the client
 
 
 const app = express() // tạo express application
 const port =  process.env.PORT || 8888 // init port
 console.log('>>>  chegitck :', process.env.PORT ) 
-// khi nào muốn sử dụng process thì xuất cái thư viện dotenv (dòng 1)
 const hostname =  process.env.HOST_NAME 
 
 
 // config req.body
 app.use(express.json()); // Used to parse JSON bodies
-app.use(express.urlencoded()); //Parse URL-encoded bodies
+app.use(express.urlencoded({ extended: true })); //Parse URL-encoded bodies
 
 
-// config template engine
-configViewEngine(app);
 
-// khai báo routes
-app.use('/', webRoutes);
+configViewEngine(app); // gọi hàm 
 
-//test connection
+app.use('/', webRoutes); // Gắn các routes vào ứng dụng Express
 
-
-/*
-connection.query(
-    'select * from Users u',
-    function (err, results, fields) {
-        console.log(">>>>>> results = ", results );
-        // console.log(">>> fields = ", fields);
-    }
-);
-*/
 
 //run server trên port đã khởi tạo trước đấy
 //nạp các thông tin khai báo ở trên rồi chạy (ví dụ như nạp routes)
