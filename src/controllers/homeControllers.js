@@ -41,8 +41,12 @@ const postCreateUser = async (req, res) => {
     res.send(' Created user succeed  !!');
 }
 
+const getUpdatePage = (req,res) => {
+    res.render('edit.ejs');
+}
+
 module.exports = {
     getHomepage, getABC, getHoidanit, 
-    postCreateUser, getCreatePage, 
+    postCreateUser, getCreatePage, getUpdatePage
 }
 

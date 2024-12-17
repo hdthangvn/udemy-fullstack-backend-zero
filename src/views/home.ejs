@@ -66,12 +66,12 @@
         <% listUsers.forEach(function(user, index) { %>
 
           <tr>
-             <td> <%= user.id %> - <%= index %> </td>
+             <td> <%= user.id %> </td>
              <td> <%= user.email %></td>
              <td> <%= user.name %></td>
              <td> <%= user.city %></td>
              <td>
-               <button>Edit</button>
+               <a href="/update">Edit</a> <!-- the a ung vs method get -->
                <button>Delete</button>
              </td>
           </tr>
