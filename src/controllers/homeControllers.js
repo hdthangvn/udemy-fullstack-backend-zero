@@ -42,6 +42,8 @@ const postCreateUser = async (req, res) => {
 }
 
 const getUpdatePage = (req,res) => {
+    const userId = req.params.id;
+    console.log(">>> req.params:: ", req.params) // kieu du lieu String
     res.render('edit.ejs');
 }
 

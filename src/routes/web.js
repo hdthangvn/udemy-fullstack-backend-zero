@@ -13,7 +13,7 @@ router.get('/abc', getABC);
 router.get('/hoidanit', getHoidanit);
 router.get('/create', getCreatePage);
 router.post('/create-user', postCreateUser);
-router.get('/update', getUpdatePage);
+router.get('/update/:id', getUpdatePage);
 
 module.exports = router; // export default
 
