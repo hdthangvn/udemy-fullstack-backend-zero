@@ -1,14 +1,11 @@
-
 const connection = require('../config/database');
 const router = require('../routes/web');
-const {getAllUsers, getUserById} = require('../services/CRUDService');
+const {getAllUsers, getUserById,updateUserById} = require('../services/CRUDService');
 
 const getHomepage = async (req, res) => {
     let results = await getAllUsers()
     // let ky vong ve phai tra ra dang array -> dung await
-    console.log(">>> check rows:", results);
-    return res.render('home.ejs', {listUsers: results})
-   
+    return res.render('home.ejs', {listUsers: results})  
 }
 
 const getABC = (req, res) => {
@@ -32,8 +29,6 @@ const postCreateUser = async (req, res) => {
     
     console.log(">>> email =", email, "   >>> name = ", name, "  >>> city = ", city)
 
-    
-
     let [results, fields] = await connection.query(
         `INSERT INTO Users (email, name, city) VALUES (?, ?, ?);`, [email , name , city ],
     ); 
@@ -44,12 +39,25 @@ const postCreateUser = async (req, res) => {
 const getUpdatePage =async (req,res) => {
     const userId = req.params.id
     let user = await getUserById(userId);
-
     res.render('edit.ejs', {userEdit : user}); // gan user sang userEdit de su dung cho view
+}
+
+const postUpdateUser = async (req, res) => {
+    let email = req.body.email;
+    let name = req.body.myname;
+    let city = req.body.city;
+    let userId = req.body.userId;
+    //  let {email, name, city} = req.body;
+    
+    await updateUserById(email , city, name, userId)
+    
+    // res.send(' Updated user succeed  !!');
+    res.redirect('/');
 }
 
 module.exports = {
     getHomepage, getABC, getHoidanit, 
-    postCreateUser, getCreatePage, getUpdatePage
+    postCreateUser, getCreatePage
+    ,getUpdatePage,postUpdateUser
 }
 
