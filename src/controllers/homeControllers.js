@@ -1,7 +1,7 @@
 
 const connection = require('../config/database');
 const router = require('../routes/web');
-const {getAllUsers} = require('../services/CRUDService');
+const {getAllUsers, getUserById} = require('../services/CRUDService');
 
 const getHomepage = async (req, res) => {
     let results = await getAllUsers()
@@ -41,10 +41,11 @@ const postCreateUser = async (req, res) => {
     res.send(' Created user succeed  !!');
 }
 
-const getUpdatePage = (req,res) => {
-    const userId = req.params.id;
-    console.log(">>> req.params:: ", req.params) // kieu du lieu String
-    res.render('edit.ejs');
+const getUpdatePage =async (req,res) => {
+    const userId = req.params.id
+    let user = await getUserById(userId);
+
+    res.render('edit.ejs', {userEdit : user}); // gan user sang userEdit de su dung cho view
 }
 
 module.exports = {
